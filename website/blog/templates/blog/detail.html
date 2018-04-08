@@ -1,23 +1,47 @@
 {% extends "blog/base.html" %}
 
 {% block content %}
-<h2 class="ui header"> {{ post.title }} 
-    <div class="sub header">{{post.pub_date}}, authored by {{post.author}}.</div>
-</h2>
-
-<p>
-    {{ post.content }}
-</p>
-<div class="ui equal width grid">
-    <div class="row">
-        <div class="column left aligned">
-            <a href="{% url 'blog:index' %}"> Back </a>
-        </div> 
-        <div class="column right aligned">
-            <a href="{% url 'blog:index' %}"> Comment </a>
-        </div> 
-     </div> 
+<div class="ui one column grid">
+    <div class="column">
+       <div class="ui grid">
+            <div class="row">
+                <div class="fourteen wide column">
+                    <h2 class="ui header"> {{ post.title }} 
+                        <div class="sub header">{{post.pub_date}}, authored by {{post.author}}.</div>
+                    </h2>
+                </div>
+                <div class="two wide column right aligned">
+                    <a href="{% url 'blog:index' %}"> Back </a>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <div class="column">
+            {{ post.content }}
+    </div> 
 </div> 
+ 
+<div class="ui grid">
+    {% if error_message %}
+    <div class="row">
+        <div class="column">
+            <div class="ui message">
+                {{error_message}}
+            </div>
+        </div>
+     </div>
+     {% endif %}
+     <div class="row">
+        <div class="column">
+            <form class="ui form" action="{% url 'blog:comment' post.id %}" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+               <input class="ui button" type="submit" value="Submit" />
+            </form>
+        </div> 
+    </div> 
+</div> 
+
 <div class="ui comments">
     <h3 class="ui dividing header">Comments</h3>
 {% if comments %}
