@@ -9,7 +9,7 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ['title']
 
 class CommentAdmin(admin.ModelAdmin):
-    fields = ('author', 'post', 'title', 'content', 'pub_date')
+    fields = ('username','email', 'post', 'title', 'content', 'pub_date')
     list_display = ('title', 'pub_date')
     list_filter = ['pub_date']
     search_fields = ['title']

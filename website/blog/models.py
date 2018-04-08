@@ -12,9 +12,10 @@ class Post(models.Model):
         return '<Post %s />' % self.title
 
 class Comment(models.Model):
-    author = models.ForeignKey(User, on_delete=models.CASCADE) 
     pub_date = models.DateTimeField('date published')
     post = models.ForeignKey(Post, on_delete=models.CASCADE) 
+    username = models.CharField(max_length=255)
+    email = models.CharField(max_length=255)
     title = models.CharField(max_length=255)
     content = models.TextField()
 
