@@ -37,3 +37,14 @@ pip install Django
 ```
 ./manage.py runserver 8000
 ```
+
+## Admin page
+
+```
+localhost:8000/admin
+```
+
+```
+username: admin
+password: admin12345
+```
