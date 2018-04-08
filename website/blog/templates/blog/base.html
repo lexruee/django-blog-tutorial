@@ -2,9 +2,30 @@
 <html>
 <head>
     <title> {% block title %}Blog{% endblock %}</title>
-</head>
+    {% load static %}
+   <link href="{% static 'blog/semantic.min.css' %}" rel="stylesheet" type="text/css" />
+   <link href="{% static 'blog/custom.css' %}" rel="stylesheet" type="text/css" />
+    <script src="{% static 'blog/jquery-3.1.1.min.js' %}"></script>
+    <script src="{% static 'blog/semantic.min.js' %}"></script>
+ </head>
 
 <body>
+    
+    <div class="ui text container">
+        <h1 class="ui dividing header">
+            <div class="item">
+            <i class="book icon"></i>
+            <a href="{% url 'blog:index' %}"> Simple Blog </a>
+            </div>
+        </h1>
+        <div class="hidden divider"></div>
+    </div>
+    <div class="ui text container">
     {% block content %}{% endblock %}
+    </div>
+    <div class="ui text container">
+        <div class="ui divider"></div>
+        Simple blog by lexruee.
+    </div>
 </body>
 </html>

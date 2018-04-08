@@ -1,20 +1,37 @@
 {% extends "blog/base.html" %}
 
 {% block content %}
-<h1> {{ post.title }} </h1>
+<h2 class="ui header"> {{ post.title }} 
+    <div class="sub header">{{post.pub_date}}, authored by {{post.author}}.</div>
+</h2>
 
 <p>
     {{ post.content }}
 </p>
-<a href="{% url 'blog:index' %}"> Back </a>
-
-<h2> Comments </h2>
+<div class="ui equal width grid">
+    <div class="row">
+        <div class="column left aligned">
+            <a href="{% url 'blog:index' %}"> Back </a>
+        </div> 
+        <div class="column right aligned">
+            <a href="{% url 'blog:index' %}"> Comment </a>
+        </div> 
+     </div> 
+</div> 
+<div class="ui comments">
+    <h3 class="ui dividing header">Comments</h3>
 {% if comments %}
     {% for comment in comments %}
-        <h3> {{comment.title}} </h3>
-        <p> {{comment.content}} </p>
+        <div class="small ui header">
+            {{comment.title}}
+            <div class="sub header">
+                Authored by {{comment.author}}, {{comment.pub_date}}
+            </div>
+        </div>
+        <p>{{comment.content}}</p>
     {% endfor %}
 {% else %}
-    <p> No comments are published. </p>
+    <p> No comments. </p>
 {% endif %}
+</div>
 {% endblock %}
