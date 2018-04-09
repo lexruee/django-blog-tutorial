@@ -38,10 +38,22 @@ pip install Django
 ./manage.py runserver 8000
 ```
 
+## Startpage
+
+```
+http://localhost:8000
+```
+or
+
+```
+http://localhost:8000/blog
+```
+
+
 ## Admin page
 
 ```
-localhost:8000/admin
+http://localhost:8000/admin
 ```
 
 ```
